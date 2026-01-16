@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+  /* color: white; */
+}
+
+h1 {
+  text-align: center;
+}
+
+h4 {
+  margin: 4px 0;
+}
+
+select {
+  margin-bottom: 0;
+  background-color: gainsboro;
+}
+label{
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+input{
+  background-color: gainsboro;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+}
+table{
+  color: white;
+  border: 1px solid white;
+  border-color: wheat;
+  
+}
+th{
+  border: 1px solid white;
+  padding: 5px;
+}
+td{
+  /* border: 1px solid white; */
+  padding: 5px;
+}
+tr{
+  border: 1px solid white;
+  padding: 5px;
+}
+
