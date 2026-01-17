@@ -52,6 +52,7 @@ export default function Leads() {
                                 <td>{lead.phone}</td>
                                 <td>{lead.status}</td>
                                 <td>{user.tenant}</td>
+                                {user.role === 'Admin' && <td><button style={{padding:"2px"}}>Update</button></td>}
                             </tr>
                         ))
                         }

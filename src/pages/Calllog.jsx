@@ -12,7 +12,7 @@ export default function Calllog() {
         <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
             <div>
                 <h2 style={{textAlign:'center', color:'white', marginTop:'20px'}}>Call Logs Data</h2>
-                <table border='2' bgcolor='' cellPadding="8" style={{ marginTop: "10px" }} >
+                <table border='2' bgcolor='' cellPadding="1" style={{ marginTop: "10px" }} >
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -30,7 +30,8 @@ export default function Calllog() {
                                 <td>{lead.time}</td>
                                 <td>{lead.duration}</td>
                                 <td>{lead.outcome}</td>
-                                <td>orgA</td>
+                                <td>{user.tenant}</td>
+                                {user.role === 'Admin' && <td><button style={{padding:"2px"}}>Update</button></td>}
                             </tr>
                         ))
                         }
