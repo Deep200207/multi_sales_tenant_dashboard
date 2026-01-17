@@ -1,16 +1,49 @@
-# React + Vite
+# Folder Structure
+src/
+├── data/ #Mock tenant-specific data
+├── context/ #Global authentication and tenant state
+├── components/    Reusable components (Protected routes)
+├── pages/         Route-level components (Dashboard, Leads, etc.)
+├── App.jsx        Routing and lazy loading
+└── main.jsx       Application entry point
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Multi-Tenant Handling
+The application supports multiple tenants (Organization A and Organization B).
+Each user belongs to exactly one tenant.
+All data (leads and call logs) is isolated per tenant.
+Switching the tenant updates the visible data without affecting other tenants.
+Tenant-specific data is managed using keyed mock datasets.
 
-Currently, two official plugins are available:
+# Role-Based Access Control
+The application supports two roles:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Admin
+Full access within the tenant
+Can view and edit lead status
+Can access the Settings page
 
-## React Compiler
+## Agent
+View-only access
+Can view leads and call logs
+Cannot edit data or access admin settings
+Role checks are enforced at the UI and route level
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Core Functional Modules
+## Leads Module
+Displays leads in a column-based table layout
+Fields include name, phone number, and status
+Supports filtering by lead status
+Edit actions are available only to Admin users
+## Call Logs Module
+Displays call logs in a tabular format
+Shows lead name, time, duration, and outcome
+Data is tenant-specific and read-only
 
-## Expanding the ESLint configuration
+#Frontend Optimization
+Route-level lazy loading is implemented using React.lazy and Suspense.
+Pages such as Dashboard, Leads, Call Logs, and Settings are loaded only when accessed.
+Context API is used to avoid prop drilling and reduce unnecessary re-renders.
+These optimizations improve performance and scalability.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# How to Run the Project
+npm run dev
